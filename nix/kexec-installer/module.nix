@@ -16,10 +16,9 @@ in
 {
   imports = [
     (modulesPath + "/installer/netboot/netboot-minimal.nix")
-    ../installer.nix
     ../networkd.nix
     ../serial.nix
-    ../restore-remote-access.nix
+    ./hack.nix
   ];
 
   options = {

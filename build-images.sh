@@ -41,18 +41,22 @@ main() {
     channel=$(if [[ "$tag" == nixos-unstable ]]; then echo "unstable"; else echo "stable"; fi)
     build_kexec_installer "$channel" "$arch" "$tmp" ""
     build_kexec_installer "$channel" "$arch" "$tmp" "-noninteractive"
-    build_netboot_image "$tag" "$channel" "$arch" "$tmp"
-    build_image_installer "$channel" "$arch" "$tmp"
+#    build_netboot_image "$tag" "$channel" "$arch" "$tmp"
+#    build_image_installer "$channel" "$arch" "$tmp"
   ) | readarray -t assets
   for asset in "${assets[@]}"; do
     pushd "$(dirname "$asset")"
     popd
   done
 
-  if ! gh release view "$tag"; then
-    gh release create --title "$tag (build $(date +"%Y-%m-%d"))" "$tag"
-  fi
-  gh release upload --clobber "$tag" "${assets[@]}"
+  #if ! gh release view "$tag"; then
+  #  gh release create --title "$tag (build $(date +"%Y-%m-%d"))" "$tag"
+  #fi
+  #gh release upload --clobber "$tag" "${assets[@]}"
+  # echo "${assets[@]}"
+  rm -rfv /tmp/kexec-assets
+  mkdir -p /tmp/kexec-assets
+  cp -v "${assets[@]}" /tmp/kexec-assets/
 }
 
 main "$@"
