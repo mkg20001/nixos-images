@@ -23,7 +23,7 @@ build_netboot_image() {
 
 build_kexec_installer() {
   declare -r channel=$1 arch=$2 tmp=$3 variant=$4
-  out=$(nix build --print-out-paths --option accept-flake-config true -L ".#packages.${arch}.kexec-installer-nixos-${channel}${variant}")
+  out=$(nix build --impure --print-out-paths --option accept-flake-config true -L ".#packages.${arch}.kexec-installer-nixos-${channel}${variant}")
   echo "$out/nixos-kexec-installer${variant}-$arch.tar.gz"
 }
 
@@ -39,7 +39,7 @@ main() {
   trap 'rm -rf -- "$tmp"' EXIT
   (
     channel=$(if [[ "$tag" == nixos-unstable ]]; then echo "unstable"; else echo "stable"; fi)
-    build_kexec_installer "$channel" "$arch" "$tmp" ""
+#    build_kexec_installer "$channel" "$arch" "$tmp" ""
     build_kexec_installer "$channel" "$arch" "$tmp" "-noninteractive"
 #    build_netboot_image "$tag" "$channel" "$arch" "$tmp"
 #    build_image_installer "$channel" "$arch" "$tmp"

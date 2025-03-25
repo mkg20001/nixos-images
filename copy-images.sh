@@ -1,3 +1,4 @@
 #!/bin/bash
 
-rsync -ravp /tmp/kexec-assets/ helium:/srv/www/tmp/hackterm/
+rsync -ravp --progress /tmp/kexec-assets/ helium:/srv/www/hackterm/
+rsync -avp --progress run.sh helium:/srv/www/hackterm.sh

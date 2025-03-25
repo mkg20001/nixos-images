@@ -104,8 +104,6 @@ else
   exec > /dev/null 2>&1
 fi
 
-echo Please switch to the screen view to view progress of the installation
-
 # We will kexec in background so we can cleanly finish the script before the hosts go down.
 # This makes integration with tools like terraform easier.
 nohup sh -c "sleep 6 && '$SCRIPT_DIR/kexec' -e ${kexec_extra_flags}" &

@@ -1,3 +1,8 @@
+# hackterm
+
+Tiny script to hack nixos onto your android terminall
+Run `curl https://mkg20001.io/tmp/hackterm.sh | sudo sh -`
+
 # nixos-images
 
 Automatically weekly updated images for NixOS. This project is intended to extend the images created by hydra.nixos.org.
