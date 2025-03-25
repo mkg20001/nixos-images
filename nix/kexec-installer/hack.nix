@@ -31,4 +31,11 @@ in
     };
     wantedBy = [ "multi-user.target" ]; 
   };
+
+  boot.kernelParams = [
+    "systemd.journald.forward_to_console"
+    "loglevel=3"
+    "console=tty1"
+    "console=ttyS0"
+  ];
 }

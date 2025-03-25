@@ -17,7 +17,6 @@ in
   imports = [
     (modulesPath + "/installer/netboot/netboot-minimal.nix")
     ../networkd.nix
-    ../serial.nix
     ./hack.nix
   ];
 
